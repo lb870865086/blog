@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<ol class="breadcrumb">
+	<li><a href="/">管理首页</a> </li>
+	<li><span>分类编辑</span></li>
+</ol>
+<form action="" role="role" method="post">
+	<div class="form-group">
+		<label for="name">分类名称</label>
+		<input type="text" class="form-control" id="name" name="name" placeholder="请输入分类名称" />
+		<button type="submit" class="btn btn-default" >提交</button>
+	</div>
+	
+</form>
+	{% include 'page.html' %}<!--使用该种模板引用必须保证后端在给出数据的时候包含引用本身所需要的数据-->
+{% endblock %}

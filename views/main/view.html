@@ -1,0 +1,52 @@
+{%extends 'laout.html'%}
+{%block content %}
+
+
+<div class="main1">
+    <div class="title">
+        <h2>{{content.title}}</h2>
+        <span>作者&nbsp;:</span><a href="">{{content.Users}}</a>
+        <span>-时间&nbsp;:</span><a href="">{{content.addTime|date('Y年m月d日 H:i:s',-60)}}</a>
+        <span>-阅读&nbsp;:</span><a href="">{{content.views}}</a>
+        <span>-评论&nbsp;:</span><a href="">{{content.comments.length}}</a>
+    </div>
+    <div class="contents">{{content.content}}</div>
+</div>
+
+<!--留言部分-->
+<div class="dis_wrap">
+    <span class="dis">评论</span>
+    <span class="text-right">一共有<em id="commentsList"></em>条评论</span>
+    {% if userInfo._id %}
+    <h4 class="userTitle">admin</h4>
+    <div class="search">
+        <input type="text" class="sear" id="sear">
+        <input type="hidden" id = "contentId" value="{{content.id}}">
+        <span class="sub btn" id = "submit">提交</span>
+    </div>
+    {% else %}
+    <span class="bg-danger text-center">您还没有登录，请先登录</span>
+    {%endif%}
+    <div class="messageList">
+
+        {% if Contents._id %}
+
+        {%endif%}
+    </div>
+</div>
+<nav aria-label="...">
+    <ul class="pager">
+        <!--上一页判断-->
+
+        <li class="previous"><a href="javasript:;" class="J_prev"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+
+        <li class="showList"></li>
+        <li class="next"><a href="javasript:;" class="J_next">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+
+    </ul>
+</nav>
+{%endblock%}
+
+
+
+

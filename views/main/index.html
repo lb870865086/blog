@@ -1,0 +1,40 @@
+{%extends 'laout.html'%}
+{%block content %}
+
+{% for content in contents %}
+<div class="main1">
+    <div class="title">
+        <h2>{{content.title}}</h2>
+        <span>作者&nbsp;:</span><a href="">{{content.Users}}</a>
+        <span>-时间&nbsp;:</span><a href="">{{content.addTime|date('Y年m月d日 H:i:s',-60)}}</a>
+        <span>-阅读&nbsp;:</span><a href="">{{content.views}}</a>
+        <span>-评论&nbsp;:</span><a href="">{{content.comments.length}}</a>
+    </div>
+    <div class="content">
+        <div class="c_title">文章标题：{{content.description}}</div>
+        <div class="more bg-primary">
+            <a href="/view?contentid={{content.id}}">阅读全文</a>
+        </div>
+    </div>
+</div>
+{%endfor%}
+<nav aria-label="...">
+    <ul class="pager">
+        <!--上一页判断-->
+        {% if page<=1 %}
+        <li class="previous"><a href="javascript:;"><span aria-hidden="true">&larr;</span> 没有上一页</a></li>
+        {% else %}
+        <li class="previous"><a href="/?page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+        {% endif %}
+        <!--中部内容数量显示-->
+        <li>{{page}}/{{pages}} </li>
+        <!--下一页判断-->
+        {% if page >= pages %}
+        <li class="next"><a href="javascript:;">没有下一页了 <span aria-hidden="true">&rarr;</span></a></li>
+        {% else %}
+        <li class="next"><a href="/?page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+        {%endif%}
+    </ul>
+</nav>
+{%endblock%}
+

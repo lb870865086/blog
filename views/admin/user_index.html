@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+	<ol class="breadcrumb">
+		
+		<li><a href="/">管理首页</a> </li>
+		<li><span>内容列表</span></li>
+	</ol>
+	
+	<!--表格展示用户信息-->
+	<h3>用户列表</h3>
+	<table class="table table-hover table-bordered">
+		<tr class="info">
+			<td>分类id</td>
+			<td>分类名称</td>
+			<td>操作</td>
+		</tr>
+		{% for content in contents %}
+		<tr>
+			<td>{{content._id.toString()}}</td>
+			<td>{{content.name}}</td>
+			<!--<td>
+				<a href="/admin/category/edit?id={{categories._id.toString()}}">修改</a>
+				<a href="/admin/category/delete?id={{categories._id.toString()}}">删除</a>
+				
+			</td>-->
+		</tr>
+		{%endfor%}
+	</table>
+	
+
+	<nav aria-label="...">
+		
+		<!--信息数量显示-->
+  <ul class="pager">
+    <li class="previous"><a href="/admin/category/?page={{page-1}}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+    <li>
+    	一共有{{count}}条数据，每页显示{{limit}}条数据，一共{{pages}}页，当前是第{{page}}页
+    </li>
+    <li class="next"><a href="/admin/category/?page={{page+1}}">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+	{% endblock %}
+	
